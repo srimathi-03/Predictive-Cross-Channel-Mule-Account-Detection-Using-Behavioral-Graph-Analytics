@@ -4,18 +4,6 @@
     <meta charset="utf-8" />
     <title>Predictive Cross-Channel Mule Account Detection</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Reveal.js core + theme via CDN -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/reveal.js@5.1.0/dist/reveal.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/reveal.js@5.1.0/dist/theme/black.css"
-      id="theme"
-    />
-
     <style>
       :root {
         --bg: #020617;
@@ -24,22 +12,23 @@
       }
 
       body {
+        margin: 0;
+        padding: 0;
         background: radial-gradient(circle at top left, #0b1120, #020617);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
           sans-serif;
-      }
-
-      .reveal {
         color: #e5e7eb;
       }
 
-      .reveal .slides {
-        text-align: left;
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 16px 60px;
       }
 
-      .reveal h1,
-      .reveal h2,
-      .reveal h3 {
+      h1,
+      h2,
+      h3 {
         color: #f9fafb;
         letter-spacing: 0.04em;
       }
@@ -50,7 +39,7 @@
         border-radius: 999px;
         background: rgba(15, 23, 42, 0.9);
         border: 1px solid rgba(148, 163, 184, 0.35);
-        font-size: 0.55em;
+        font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.15em;
         color: #9ca3af;
@@ -59,7 +48,7 @@
 
       .subtitle {
         color: #9ca3af;
-        font-size: 0.8em;
+        font-size: 0.95rem;
         margin-top: 0.5em;
       }
 
@@ -67,7 +56,7 @@
         color: #60a5fa;
       }
 
-      .reveal section {
+      .slide {
         background: radial-gradient(
             circle at top left,
             rgba(37, 99, 235, 0.2),
@@ -79,29 +68,16 @@
             transparent
           );
         border-radius: 18px;
-        padding: 32px 38px;
+        padding: 24px 24px 26px;
         box-sizing: border-box;
         box-shadow: 0 20px 60px rgba(15, 23, 42, 0.95);
+        margin-bottom: 24px;
       }
 
       .two-col {
         display: grid;
-        grid-template-columns: 1.3fr 1fr;
-        gap: 2.2rem;
-      }
-
-      .metric-row {
-        display: flex;
-        gap: 1.5rem;
-        margin-top: 1rem;
-      }
-
-      .metric {
-        padding: 0.5rem 0.9rem;
-        border-radius: 0.8rem;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.25);
-        font-size: 0.7em;
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+        gap: 1.8rem;
       }
 
       .diagram-box {
@@ -109,414 +85,405 @@
         padding: 1rem;
         border: 1px dashed rgba(148, 163, 184, 0.4);
         background: rgba(15, 23, 42, 0.9);
-        font-size: 0.7em;
+        font-size: 0.86rem;
       }
 
       .tagline {
         margin-top: 1rem;
-        font-size: 0.7em;
+        font-size: 0.85rem;
         color: #9ca3af;
       }
 
       ul {
-        font-size: 0.8em;
+        font-size: 0.9rem;
       }
 
       .timeline {
         margin-top: 1rem;
-        font-size: 0.75em;
+        font-size: 0.9rem;
       }
 
       .timeline span {
         color: #60a5fa;
       }
+
+      @media (max-width: 800px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <div class="title-pill">Fintech Fraud Intelligence</div>
-          <h1>Predictive Cross-Channel Mule Account Detection</h1>
-          <p class="subtitle">
-            Using <span class="accent">Behavioral Graph Analytics</span> to
-            transform reactive fraud monitoring into proactive prevention.
-          </p>
-          <p class="subtitle">
-            Presented by: <b>Your Name</b> · College / Team · 2026
-          </p>
-        </section>
+    <main>
+      <section class="slide">
+        <div class="title-pill">Fintech Fraud Intelligence</div>
+        <h1>Predictive Cross-Channel Mule Account Detection</h1>
+        <p class="subtitle">
+          Using <span class="accent">Behavioral Graph Analytics</span> to
+          transform reactive fraud monitoring into proactive prevention.
+        </p>
+        <p class="subtitle">
+          Presented by: <b>Your Name</b> · College / Team · 2026
+        </p>
+      </section>
 
-        <section>
-          <div class="title-pill">Problem</div>
-          <h2>The Cross-Channel Mule Account Problem</h2>
-          <ul>
-            <li>
-              <b>Mule accounts move stolen funds</b> across bank, wallet, UPI
-              and card channels.
-            </li>
-            <li>
-              <b>Traditional AML rules are siloed</b> and focus on single
-              transactions, not relationships.
-            </li>
-            <li>
-              <b>Fraudsters rotate SIMs, devices, and accounts</b> to stay
-              invisible.
-            </li>
-            <li>
-              Banks face <b>high loss exposure and reputational risk</b> from
-              late or missed mule detection.
-            </li>
-          </ul>
-          <div class="timeline">
-            Onboarding → Funds In → <span>Rapid Cash Out</span> → Detection
-            (too late)
+      <section class="slide">
+        <div class="title-pill">Problem</div>
+        <h2>The Cross-Channel Mule Account Problem</h2>
+        <ul>
+          <li>
+            <b>Mule accounts move stolen funds</b> across bank, wallet, UPI and
+            card channels.
+          </li>
+          <li>
+            <b>Traditional AML rules are siloed</b> and focus on single
+            transactions, not relationships.
+          </li>
+          <li>
+            <b>Fraudsters rotate SIMs, devices, and accounts</b> to stay
+            invisible.
+          </li>
+          <li>
+            Banks face <b>high loss exposure and reputational risk</b> from late
+            or missed mule detection.
+          </li>
+        </ul>
+        <div class="timeline">
+          Onboarding → Funds In → <span>Rapid Cash Out</span> → Detection (too
+          late)
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="title-pill">Gaps</div>
+        <h2>Why Current Systems Fail</h2>
+        <ul>
+          <li>
+            <b>Brittle rule-based monitoring</b> – small pattern changes evade
+            detection.
+          </li>
+          <li>
+            <b>Channel silos</b> – card, UPI, internet banking and wallets are
+            monitored separately.
+          </li>
+          <li>
+            <b>No first-class graph view</b> of devices, SIMs, merchants and IP
+            relationships.
+          </li>
+          <li>
+            <b>Slow investigations</b> – analysts manually stitch data from
+            multiple tools.
+          </li>
+        </ul>
+        <p class="tagline">
+          Result: <b>mules are often detected weeks after onboarding</b>, if at
+          all.
+        </p>
+      </section>
+
+      <section class="slide">
+        <div class="title-pill">Solution</div>
+        <h2>Behavioral Graph Intelligence for Mule Detection</h2>
+        <div class="two-col">
+          <div>
+            <ul>
+              <li>
+                <b>Unify cross-channel signals</b> into a behavioral graph of
+                accounts, devices, SIMs, IPs and merchants.
+              </li>
+              <li>
+                <b>Continuously score every account</b> with a Mule Intelligence
+                Score (0–100).
+              </li>
+              <li>
+                Detect suspicious <b>clusters and cash-out paths</b> in
+                near-real time.
+              </li>
+              <li>
+                Provide a <b>SaaS dashboard</b> for risk teams: KPIs, analysis
+                tools, alerts and simulations.
+              </li>
+            </ul>
+            <p class="tagline">
+              From reactive case handling to
+              <span class="accent">predictive, graph-driven prevention</span>.
+            </p>
           </div>
-        </section>
-
-        <section>
-          <div class="title-pill">Gaps</div>
-          <h2>Why Current Systems Fail</h2>
-          <ul>
-            <li>
-              <b>Brittle rule-based monitoring</b> – small pattern changes evade
-              detection.
-            </li>
-            <li>
-              <b>Channel silos</b> – card, UPI, internet banking and wallets
-              are monitored separately.
-            </li>
-            <li>
-              <b>No first-class graph view</b> of devices, SIMs, merchants and
-              IP relationships.
-            </li>
-            <li>
-              <b>Slow investigations</b> – analysts manually stitch data from
-              multiple tools.
-            </li>
-          </ul>
-          <p class="tagline">
-            Result: <b>mules are often detected weeks after onboarding</b>, if
-            at all.
-          </p>
-        </section>
-
-        <section>
-          <div class="title-pill">Solution</div>
-          <h2>Behavioral Graph Intelligence for Mule Detection</h2>
-          <div class="two-col">
-            <div>
-              <ul>
-                <li>
-                  <b>Unify cross-channel signals</b> into a behavioral graph of
-                  accounts, devices, SIMs, IPs and merchants.
-                </li>
-                <li>
-                  <b>Continuously score every account</b> with a Mule
-                  Intelligence Score (0–100).
-                </li>
-                <li>
-                  Detect suspicious <b>clusters and cash-out paths</b> in
-                  near-real time.
-                </li>
-                <li>
-                  Provide a <b>SaaS dashboard</b> for risk teams: KPIs, analysis
-                  tools, alerts and simulations.
-                </li>
-              </ul>
-              <p class="tagline">
-                From reactive case handling to
-                <span class="accent">predictive, graph-driven prevention</span>.
-              </p>
-            </div>
-            <div class="diagram-box">
-              <b>Concept Diagram</b><br />
-              Data Sources (Transactions, Devices, SIMs, KYC, IPs)<br />
-              ↓<br />
-              Behavioral Graph Engine &amp; Risk Scoring<br />
-              ↓<br />
-              Analyst Dashboard &amp; Alerts
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="title-pill">Architecture</div>
-          <h2>End-to-End System Architecture</h2>
-          <div class="two-col">
-            <div>
-              <h3>Data &amp; Backend</h3>
-              <ul>
-                <li>
-                  Ingest transactions, logins, device fingerprints, SIM changes,
-                  KYC data.
-                </li>
-                <li>
-                  <b>Node.js / Express</b> risk engine exposing REST APIs:
-                  <code>/api/dashboard</code>, <code>/api/analyze</code>,
-                  <code>/api/network</code>, <code>/api/simulate</code>,
-                  <code>/api/alerts</code>.
-                </li>
-                <li>
-                  Behavioral + graph features computed per account and per
-                  cluster.
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3>Frontend &amp; Users</h3>
-              <ul>
-                <li>
-                  <b>React dashboard</b> with dark fintech UI and blue accents.
-                </li>
-                <li>
-                  Pages: Dashboard, Risk Analysis, Graph Network, Simulation,
-                  Alerts, Reports, Settings.
-                </li>
-                <li>
-                  Accessible as a <b>multi-tenant SaaS</b> for banks and
-                  fintechs.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="title-pill">Stack</div>
-          <h2>Technology Stack</h2>
-          <div class="two-col">
-            <div>
-              <h3>Frontend</h3>
-              <ul>
-                <li>React + Vite</li>
-                <li>React Router for multi-page dashboard UX</li>
-                <li>Chart.js for KPI charts and MIS trends</li>
-                <li>D3.js for interactive fraud network visualization</li>
-              </ul>
-              <h3>Backend</h3>
-              <ul>
-                <li>Node.js + Express REST APIs</li>
-                <li>CORS-enabled, cloud-ready microservice</li>
-                <li>
-                  Pluggable risk logic for integration with real data lakes or
-                  graph DBs
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3>Deployment Ready</h3>
-              <ul>
-                <li>Frontend deployable on Vercel (static SPA)</li>
-                <li>Backend deployable on Render / Railway</li>
-                <li>HTTPS endpoints suitable for sandbox integrations</li>
-              </ul>
-              <p class="tagline">
-                Built to move from prototype to <span class="accent"
-                  >production pilots</span
-                >.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div class="title-pill">Behavioral Graph</div>
-          <h2>Behavioral Graph Analytics Concept</h2>
-          <ul>
-            <li>
-              Nodes represent <b>accounts, devices, SIMs, merchants, IPs and
-              clusters</b>.
-            </li>
-            <li>
-              Edges capture relationships: <b>shared device / SIM, common IP,
-              cash-out paths, co-merchant usage</b>.
-            </li>
-            <li>
-              Graph features: degree centrality, shared neighbors, cluster
-              density, temporal motifs.
-            </li>
-            <li>
-              These features feed into the Mule Intelligence Score and
-              <b>cluster-level alerts</b>.
-            </li>
-          </ul>
           <div class="diagram-box">
-            Visual: red mule hub node connected to multiple blue accounts and
-            green devices; suspicious cluster highlighted for analysts.
+            <b>Concept Diagram</b><br />
+            Data Sources (Transactions, Devices, SIMs, KYC, IPs)<br />
+            ↓<br />
+            Behavioral Graph Engine &amp; Risk Scoring<br />
+            ↓<br />
+            Analyst Dashboard &amp; Alerts
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <div class="title-pill">Risk Model</div>
-          <h2>Mule Intelligence Scoring</h2>
-          <ul>
-            <li>
-              Score range <b>0–100</b> combining weighted behavioral and graph
-              signals.
-            </li>
-            <li>
-              Features (examples):
-              <ul>
-                <li>SIM change frequency (last 30 days)</li>
-                <li>Recent account openings (90 days)</li>
-                <li>Cashout timing score vs. inflows</li>
-                <li>Night transaction ratio</li>
-                <li>Shared device / SIM count with flagged accounts</li>
-                <li>Cluster risk based on high-risk neighbors</li>
-              </ul>
-            </li>
-            <li>
-              Output: <b>Score + Risk Category</b> (Low / Medium / High /
-              Severe) + <b>Top drivers</b> for explainability.
-            </li>
-          </ul>
-          <p class="tagline">
-            Example: Score 82 = <span class="accent">Severe</span> with drivers
-            “shared high-risk device”, “night cashouts”, “SIM swap”.
-          </p>
-        </section>
-
-        <section>
-          <div class="title-pill">Product</div>
-          <h2>Dashboard &amp; Fraud Network Visualization</h2>
-          <div class="two-col">
-            <div>
-              <h3>Executive Dashboard</h3>
-              <ul>
-                <li>
-                  KPIs: Accounts Monitored, Flagged Accounts, Avg Mule
-                  Intelligence Score, Estimated Fraud Exposure.
-                </li>
-                <li>
-                  <b>Doughnut chart</b> of risk distribution (Low / Medium /
-                  High / Severe).
-                </li>
-                <li>
-                  <b>30-day MIS trend</b> line chart with scores vs. flagged
-                  accounts.
-                </li>
-                <li>
-                  Live summary: new alerts, clusters under investigation,
-                  detection latency.
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3>Fraud Network View</h3>
-              <ul>
-                <li>Interactive D3 graph with zoom, drag and hover tooltips.</li>
-                <li>Color-coded nodes by type and risk level.</li>
-                <li>
-                  Analysts can trace cash-out paths and quickly identify mule
-                  hubs.
-                </li>
-              </ul>
-              <p class="tagline">
-                Designed for <span class="accent"
-                  >risk analysts and investigators</span
-                >
-                to understand context in seconds.
-              </p>
-            </div>
+      <section class="slide">
+        <div class="title-pill">Architecture</div>
+        <h2>End-to-End System Architecture</h2>
+        <div class="two-col">
+          <div>
+            <h3>Data &amp; Backend</h3>
+            <ul>
+              <li>
+                Ingest transactions, logins, device fingerprints, SIM changes,
+                KYC data.
+              </li>
+              <li>
+                <b>Node.js / Express</b> risk engine exposing REST APIs:
+                <code>/api/dashboard</code>, <code>/api/analyze</code>,
+                <code>/api/network</code>, <code>/api/simulate</code>,
+                <code>/api/alerts</code>.
+              </li>
+              <li>
+                Behavioral + graph features computed per account and per
+                cluster.
+              </li>
+            </ul>
           </div>
-        </section>
-
-        <section>
-          <div class="title-pill">Simulation</div>
-          <h2>Simulation &amp; Prediction Module</h2>
-          <ul>
-            <li>
-              Projects <b>fraud exposure over 30 / 60 / 90 days</b> given
-              current trends.
-            </li>
-            <li>
-              Inputs: base exposure (M USD), daily growth %, mitigation
-              effectiveness %.
-            </li>
-            <li>
-              Outputs: <b>raw vs. mitigated exposure curves</b> for each
-              horizon.
-            </li>
-            <li>
-              Supports “what if we improve detection by X%?” conversations with
-              risk committees and boards.
-            </li>
-          </ul>
-          <div class="diagram-box">
-            Visual: three small line charts – red line = no controls, green line
-            = with controls, showing widening gap (loss avoided).
+          <div>
+            <h3>Frontend &amp; Users</h3>
+            <ul>
+              <li>
+                <b>React dashboard</b> with dark fintech UI and blue accents.
+              </li>
+              <li>
+                Pages: Dashboard, Risk Analysis, Graph Network, Simulation,
+                Alerts, Reports, Settings.
+              </li>
+              <li>
+                Accessible as a <b>multi-tenant SaaS</b> for banks and fintechs.
+              </li>
+            </ul>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <div class="title-pill">Impact</div>
-          <h2>Impact &amp; Benefits for Banks</h2>
-          <ul>
-            <li>
-              <b>Earlier mule detection</b> reduces direct fraud losses and
-              write-offs.
-            </li>
-            <li>
-              <b>Lower false positives</b> by combining behavior + graph context
-              rather than single rules.
-            </li>
-            <li>
-              <b>Faster investigations</b> with network visualization and
-              explainable scores.
-            </li>
-            <li>
-              Improved <b>regulatory alignment</b> with holistic, risk-based AML
-              monitoring.
-            </li>
-            <li>
-              SaaS delivery enables <b>multi-entity roll-out</b> across regions
-              and subsidiaries.
-            </li>
-          </ul>
-          <p class="tagline">
-            Illustrative: 30–40% lower mule-related exposure, 50% faster
-            investigations.
-          </p>
-        </section>
+      <section class="slide">
+        <div class="title-pill">Stack</div>
+        <h2>Technology Stack</h2>
+        <div class="two-col">
+          <div>
+            <h3>Frontend</h3>
+            <ul>
+              <li>React + Vite</li>
+              <li>React Router for multi-page dashboard UX</li>
+              <li>Chart.js for KPI charts and MIS trends</li>
+              <li>D3.js for interactive fraud network visualization</li>
+            </ul>
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js + Express REST APIs</li>
+              <li>CORS-enabled, cloud-ready microservice</li>
+              <li>
+                Pluggable risk logic for integration with real data lakes or
+                graph DBs
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>Deployment Ready</h3>
+            <ul>
+              <li>Frontend deployable on Vercel (static SPA)</li>
+              <li>Backend deployable on Render / Railway</li>
+              <li>HTTPS endpoints suitable for sandbox integrations</li>
+            </ul>
+            <p class="tagline">
+              Built to move from prototype to
+              <span class="accent">production pilots</span>.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <section>
-          <div class="title-pill">Roadmap</div>
-          <h2>Future Scope &amp; What’s Next</h2>
-          <ul>
-            <li>
-              Integrate with real bank data lakes and graph databases (e.g.,
-              Neo4j).
-            </li>
-            <li>
-              Add advanced ML: graph neural networks and sequence models on top
-              of behavioral features.
-            </li>
-            <li>
-              Build full <b>case management</b>: analyst notes, evidence,
-              workflows, SAR templates.
-            </li>
-            <li>
-              Explore <b>multi-bank consortium graph</b> for cross-institution
-              mule detection.
-            </li>
-          </ul>
-          <p class="tagline">
-            Looking for <span class="accent">pilot partners, mentors and
-            investors</span> to take this from prototype to production.
-          </p>
-        </section>
-      </div>
-    </div>
+      <section class="slide">
+        <div class="title-pill">Behavioral Graph</div>
+        <h2>Behavioral Graph Analytics Concept</h2>
+        <ul>
+          <li>
+            Nodes represent <b>accounts, devices, SIMs, merchants, IPs and
+            clusters</b>.
+          </li>
+          <li>
+            Edges capture relationships: <b>shared device / SIM, common IP,
+            cash-out paths, co-merchant usage</b>.
+          </li>
+          <li>
+            Graph features: degree centrality, shared neighbors, cluster
+            density, temporal motifs.
+          </li>
+          <li>
+            These features feed into the Mule Intelligence Score and
+            <b>cluster-level alerts</b>.
+          </li>
+        </ul>
+        <div class="diagram-box">
+          Visual: red mule hub node connected to multiple blue accounts and
+          green devices; suspicious cluster highlighted for analysts.
+        </div>
+      </section>
 
-    <script src="https://unpkg.com/reveal.js@5.1.0/dist/reveal.js"></script>
-    <script>
-      Reveal.initialize({
-        hash: true,
-        transition: "fade",
-        backgroundTransition: "fade",
-      });
-    </script>
+      <section class="slide">
+        <div class="title-pill">Risk Model</div>
+        <h2>Mule Intelligence Scoring</h2>
+        <ul>
+          <li>
+            Score range <b>0–100</b> combining weighted behavioral and graph
+            signals.
+          </li>
+          <li>
+            Features (examples):
+            <ul>
+              <li>SIM change frequency (last 30 days)</li>
+              <li>Recent account openings (90 days)</li>
+              <li>Cashout timing score vs. inflows</li>
+              <li>Night transaction ratio</li>
+              <li>Shared device / SIM count with flagged accounts</li>
+              <li>Cluster risk based on high-risk neighbors</li>
+            </ul>
+          </li>
+          <li>
+            Output: <b>Score + Risk Category</b> (Low / Medium / High / Severe)
+            + <b>Top drivers</b> for explainability.
+          </li>
+        </ul>
+        <p class="tagline">
+          Example: Score 82 = <span class="accent">Severe</span> with drivers
+          “shared high-risk device”, “night cashouts”, “SIM swap”.
+        </p>
+      </section>
+
+      <section class="slide">
+        <div class="title-pill">Product</div>
+        <h2>Dashboard &amp; Fraud Network Visualization</h2>
+        <div class="two-col">
+          <div>
+            <h3>Executive Dashboard</h3>
+            <ul>
+              <li>
+                KPIs: Accounts Monitored, Flagged Accounts, Avg Mule
+                Intelligence Score, Estimated Fraud Exposure.
+              </li>
+              <li>
+                <b>Doughnut chart</b> of risk distribution (Low / Medium / High
+                / Severe).
+              </li>
+              <li>
+                <b>30-day MIS trend</b> line chart with scores vs. flagged
+                accounts.
+              </li>
+              <li>
+                Live summary: new alerts, clusters under investigation,
+                detection latency.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>Fraud Network View</h3>
+            <ul>
+              <li>Interactive D3 graph with zoom, drag and hover tooltips.</li>
+              <li>Color-coded nodes by type and risk level.</li>
+              <li>
+                Analysts can trace cash-out paths and quickly identify mule
+                hubs.
+              </li>
+            </ul>
+            <p class="tagline">
+              Designed for
+              <span class="accent">risk analysts and investigators</span> to
+              understand context in seconds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="title-pill">Simulation</div>
+        <h2>Simulation &amp; Prediction Module</h2>
+        <ul>
+          <li>
+            Projects <b>fraud exposure over 30 / 60 / 90 days</b> given current
+            trends.
+          </li>
+          <li>
+            Inputs: base exposure (M USD), daily growth %, mitigation
+            effectiveness %.
+          </li>
+          <li>
+            Outputs: <b>raw vs. mitigated exposure curves</b> for each horizon.
+          </li>
+          <li>
+            Supports “what if we improve detection by X%?” conversations with
+            risk committees and boards.
+          </li>
+        </ul>
+        <div class="diagram-box">
+          Visual: three small line charts – red line = no controls, green line =
+          with controls, showing widening gap (loss avoided).
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="title-pill">Impact</div>
+        <h2>Impact &amp; Benefits for Banks</h2>
+        <ul>
+          <li>
+            <b>Earlier mule detection</b> reduces direct fraud losses and
+            write-offs.
+          </li>
+          <li>
+            <b>Lower false positives</b> by combining behavior + graph context
+            rather than single rules.
+          </li>
+          <li>
+            <b>Faster investigations</b> with network visualization and
+            explainable scores.
+          </li>
+          <li>
+            Improved <b>regulatory alignment</b> with holistic, risk-based AML
+            monitoring.
+          </li>
+          <li>
+            SaaS delivery enables <b>multi-entity roll-out</b> across regions
+            and subsidiaries.
+          </li>
+        </ul>
+        <p class="tagline">
+          Illustrative: 30–40% lower mule-related exposure, 50% faster
+          investigations.
+        </p>
+      </section>
+
+      <section class="slide">
+        <div class="title-pill">Roadmap</div>
+        <h2>Future Scope &amp; What’s Next</h2>
+        <ul>
+          <li>
+            Integrate with real bank data lakes and graph databases (e.g.,
+            Neo4j).
+          </li>
+          <li>
+            Add advanced ML: graph neural networks and sequence models on top of
+            behavioral features.
+          </li>
+          <li>
+            Build full <b>case management</b>: analyst notes, evidence,
+            workflows, SAR templates.
+          </li>
+          <li>
+            Explore <b>multi-bank consortium graph</b> for cross-institution
+            mule detection.
+          </li>
+        </ul>
+        <p class="tagline">
+          Looking for <span class="accent">pilot partners, mentors and
+          investors</span> to take this from prototype to production.
+        </p>
+      </section>
+    </main>
   </body>
 </html>
 
